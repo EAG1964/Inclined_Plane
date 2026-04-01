@@ -39,6 +39,7 @@
             color: #555; font-size: 11px; text-align: center; z-index: 100; width: 100%;
         }
         .licencia-bloque a { color: #2980b9; text-decoration: none; font-weight: bold; }
+        .licencia-bloque a:hover { text-decoration: underline; }
         
         @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
     </style>
@@ -71,10 +72,18 @@
     <div class="canvas-container">
         <div class="main-title">THE INCLINED PLANE</div>
         <div id="stepDisplay">Step 0: Preparation</div>
+        
         <canvas id="sim" width="750" height="650"></canvas>
         
         <div class="licencia-bloque">
-            <p>Author: <strong>EAG1964</strong> | 2026 | <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">License CC BY-NC-SA 4.0</a></p>
+            <div style="margin-bottom: 8px;">
+                <img src="https://visitor-badge.laobi.icu/badge?page_id=EAG1964.phychem.lab&left_text=Visitors&left_color=gray&right_color=blue" alt="Visitors">
+            </div>
+            <p style="margin: 0;">
+                Author: <strong>EAG1964</strong> | 2026 | 
+                <a href="https://EAG1964.github.io/" style="color: #2980b9; text-decoration: none; font-weight: bold;">Main Panel</a> |
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">License CC BY-NC-SA 4.0</a>
+            </p>
         </div>
     </div>
 
@@ -92,12 +101,12 @@
         <div id="s4" class="step-card">
             <b>4. Decomposing Weight:</b><br>
             Angle α is translated between the -Y axis and <span class="vector-text">W</span>.<br>
-            <span class="vector-text">W<span class="sub">x</span></span> = <span class="vector-text">W</span> • sin(α) ; W<span class="sub">x</span> = <span class="calc-res" id="resPx">0</span> N<br>
-            <span class="vector-text">W<span class="sub">y</span></span> = <span class="vector-text">W</span> • cos(α) ; W<span class="sub">y</span> = <span class="calc-res" id="resPy">0</span> N
+            <span class="vector-text">W<span class="sub">x</span></span> = <span class="vector-text">W</span> • sin(α) ; W<sub>x</sub> = <span class="calc-res" id="resPx">0</span> N<br>
+            <span class="vector-text">W<span class="sub">y</span></span> = <span class="vector-text">W</span> • cos(α) ; W<sub>y</sub> = <span class="calc-res" id="resPy">0</span> N
         </div>
         <div id="s5" class="step-card">
             <b>5. Represent Normal Force:</b><br>
-            <span class="vector-text">N</span> is the plane's reaction; N = W<span class="sub">y</span> = <span class="calc-res" id="resN">0</span> N
+            <span class="vector-text">N</span> is the plane's reaction; N = W<sub>y</sub> = <span class="calc-res" id="resN">0</span> N
         </div>
         <div id="s6" class="step-card">
             <b>6. Applied Force:</b><br>
@@ -105,14 +114,14 @@
         </div>
         <div id="s7" class="step-card">
             <b>7. Friction Force:</b><br>
-            <span class="vector-text">F<span class="sub">f</span></span> opposes motion; F<span class="sub">f</span> = μ • N = <span class="calc-res" id="resFr">0</span> N
+            <span class="vector-text">F<span class="sub">f</span></span> opposes motion; F<sub>f</sub> = μ • N = <span class="calc-res" id="resFr">0</span> N
         </div>
         <div id="s8" class="step-card">
             <b>8. Force Analysis:</b><br>
-            <b>Y Axis:</b> Σ<span class="vector-text">F<span class="sub">y</span></span> = m • <span class="vector-text">a<span class="sub">y</span></span>
-            <span class="formula">N - W<span class="sub">y</span> = 0 → N = W<span class="sub">y</span></span>
+            <b>Y Axis:</b> Σ<span class="vector-text">F<sub>y</sub></span> = m • <span class="vector-text">a<sub>y</sub></span>
+            <span class="formula">N - W<sub>y</sub> = 0 → N = W<sub>y</sub></span>
             
-            <b>X Axis:</b> Σ<span class="vector-text">F<span class="sub">x</span></span> = m • <span class="vector-text">a<span class="sub">x</span></span>
+            <b>X Axis:</b> Σ<span class="vector-text">F<sub>x</sub></span> = m • <span class="vector-text">a<sub>x</sub></span>
             <span class="formula" id="formulaX">F + W<sub>x</sub> - F<sub>f</sub> = m • a<sub>x</sub></span>
             
             Net Force: <span class="calc-res" id="resFNet">0</span> N<br>
@@ -196,11 +205,11 @@
 
         let mensaje9 = "";
         if (Math.abs(FNetX) < 0.01) {
-            mensaje9 = "System is in <b>EQUILIBRIUM</b> (a = 0).";
+            mensaje9 = "The system is in <b>EQUILIBRIUM</b> (a = 0).";
         } else if (FNetX > 0) {
-            mensaje9 = "Moving <b>DOWNWARDS</b> with a = " + aAbs + " m/s²";
+            mensaje9 = "Moving <b>DOWNWARD</b> with a = " + aAbs + " m/s²";
         } else {
-            mensaje9 = "Moving <b>UPWARDS</b> with a = " + aAbs + " m/s²";
+            mensaje9 = "Moving <b>UPWARD</b> with a = " + aAbs + " m/s²";
         }
 
         document.getElementById('formulaX').innerHTML = textoFormula;
